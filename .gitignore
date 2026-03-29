@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+staticfiles/
+media/
+
+# Environment variables — НИКОГДА не коммитить .env !
+.env
+.env.*
+!.env.example
+
+# uv
+# uv.lock         # раскомментируй если НЕ хочешь коммитить lock файл
+                # best practice — коммитить uv.lock для воспроизводимости
+
+# IDE
+.vscode/
+!.vscode/settings.json    # settings.json коммитим — там настройки проекта
+!.vscode/extensions.json  # рекомендованные расширения
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# pre-commit
+.secrets.baseline
