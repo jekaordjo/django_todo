@@ -1,4 +1,102 @@
 {% extends "base.html" %}
+{% block title %}Home{% endblock %}
 {% block content %}
-    <h2>Tasks tpl</h2>
+    <section class="mb-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between gap-3 align-items-md-center">
+            <div>
+                <h1 class="h3 mb-1">Список задач</h1>
+                <p class="text-muted mb-0">Управляй задачами: создавай, отмечай выполненными, редактируй.</p>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="#" class="btn btn-primary">
+                    + Создать задачу
+                    <span class="text-white-50 small d-block">DJANGO: { % url 'todo_create' % }</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="card shadow-sm border-0 rounded-4">
+        <div class="card-body p-4">
+            <div class="d-flex flex-column flex-md-row gap-2 justify-content-between mb-3">
+                <div class="btn-group" role="group">
+                    <a href="#" class="btn btn-outline-secondary btn-sm">
+                        Все
+                        <span class="text-muted small d-block">DJANGO: ?filter=all</span>
+                    </a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">
+                        Активные
+                        <span class="text-muted small d-block">DJANGO: ?filter=active</span>
+                    </a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm">
+                        Выполненные
+                        <span class="text-muted small d-block">DJANGO: ?filter=done</span>
+                    </a>
+                </div>
+                <form method="get" class="d-flex gap-2">
+                    <input type="text"
+                           class="form-control form-control-sm"
+                           placeholder="Поиск..." />
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Найти</button>
+                    <div class="text-muted small align-self-center">DJANGO: name="q" value="{{ request.GET.q }}"</div>
+                </form>
+            </div>
+            <hr />
+            <div class="text-muted small mb-3">
+                DJANGO: { % if todos % } ... { % else % } ... { % endif % }
+                <br />
+                DJANGO: { % for todo in todos % } ... { % endfor % }
+            </div>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item py-3">
+                    <div class="d-flex justify-content-between align-items-start gap-3">
+                        <div class="d-flex gap-3">
+                            <form method="post" action="#">
+                                <div class="text-muted small mb-1">DJANGO: POST toggle complete (например todo_toggle)</div>
+                                <input class="form-check-input mt-1" type="checkbox" />
+                                <span class="text-muted small d-block">DJANGO: checked if todo.completed</span>
+                            </form>
+                            <div>
+                                <a href="#" class="text-decoration-none fw-semibold text-dark">
+                                    Название задачи
+                                    <span class="text-muted small d-block">DJANGO: {{ todo.title }} → { % url 'todo_detail' todo.pk % }</span>
+                                </a>
+                                <div class="text-muted small mt-1">
+                                    Короткое описание задачи будет здесь.
+                                    <span class="d-block">DJANGO: {{ todo.description|truncatechars:120 }}</span>
+                                </div>
+                                <div class="mt-2 d-flex flex-wrap gap-2">
+                                    <span class="badge text-bg-light border">
+                                        статус
+                                        <span class="text-muted small d-block">DJANGO: done/active</span>
+                                    </span>
+                                    <span class="badge text-bg-light border">
+                                        создано
+                                        <span class="text-muted small d-block">DJANGO: {{ todo.created_at }}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column gap-2 text-end">
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Редактировать
+                                <span class="text-muted small d-block">DJANGO: { % url 'todo_edit' todo.pk % }</span>
+                            </a>
+                            <a href="#" class="btn btn-outline-danger btn-sm">
+                                Удалить
+                                <span class="text-muted small d-block">DJANGO: { % url 'todo_delete' todo.pk % }</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center py-5">
+                <h2 class="h5">Задач пока нет</h2>
+                <p class="text-muted mb-3">Создай первую задачу, чтобы начать.</p>
+                <a href="#" class="btn btn-primary">
+                    + Создать задачу
+                    <span class="text-white-50 small d-block">DJANGO: { % url 'todo_create' % }</span>
+                </a>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

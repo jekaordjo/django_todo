@@ -1,0 +1,48 @@
+<div class="text-muted small text-center py-2">
+    DJANGO: { % extends 'base.html' % }
+    <br />
+    DJANGO: { % block content % }
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+        <section class="card shadow-sm border-0 rounded-4">
+            <div class="card-body p-4">
+                <h1 class="h4 mb-1">Регистрация</h1>
+                <p class="text-muted mb-4">Создай аккаунт чтобы сохранять задачи.</p>
+                <form method="post">
+                    <div class="text-muted small mb-3">DJANGO: csrf_token</div>
+                    <div class="mb-3">
+                        <label class="form-label">Логин</label>
+                        <input type="text" class="form-control" placeholder="Ваш логин" />
+                        <div class="form-text text-muted">DJANGO: {{ form.username }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email (опционально)</label>
+                        <input type="email" class="form-control" placeholder="you@example.com" />
+                        <div class="form-text text-muted">DJANGO: {{ form.email }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Пароль</label>
+                        <input type="password" class="form-control" placeholder="Введите пароль" />
+                        <div class="form-text text-muted">DJANGO: {{ form.password1 }}</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Повтор пароля</label>
+                        <input type="password" class="form-control" placeholder="Повторите пароль" />
+                        <div class="form-text text-muted">DJANGO: {{ form.password2 }}</div>
+                    </div>
+                    <button class="btn btn-success w-100" type="submit">Создать аккаунт</button>
+                </form>
+                <hr class="my-4" />
+                <p class="text-muted small mb-0 text-center">
+                    Уже есть аккаунт?
+                    <a href="#" class="text-decoration-none">
+                        Войти
+                        <span class="text-muted d-block">DJANGO: { % url 'login' % }</span>
+                    </a>
+                </p>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="text-muted small text-center py-2">DJANGO: { % endblock % }</div>

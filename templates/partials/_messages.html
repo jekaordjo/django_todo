@@ -1,0 +1,18 @@
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>DJANGO:</strong> messages framework
+    <div class="mt-2 small text-muted">
+        { % if messages % }
+        <br />
+        &nbsp;&nbsp;{ % for message in messages % }
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="alert alert-{{ message.tags }}"&gt;{{ message }}&lt;/div&gt;
+        <br />
+        &nbsp;&nbsp;{ % endfor % }
+        <br />
+        { % endif %}
+    </div>
+    <button type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"></button>
+</div>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-white border-bottom">
+    <div class="container">
+        <a class="navbar-brand fw-semibold" href="/">
+            TodoApp
+            <span class="text-muted small d-block">DJANGO: { % url 'todo_list' % }</span>
+        </a>
+        <div class="d-flex gap-2 align-items-center">
+            <a href="#" class="btn btn-outline-primary btn-sm">
+                Задачи
+                <span class="text-muted small d-block">DJANGO: { % url 'todo_list' % }</span>
+            </a>
+            <a href="#" class="btn btn-primary btn-sm">
+                + Новая
+                <span class="text-white-50 small d-block">DJANGO: { % url 'todo_create' % }</span>
+            </a>
+            <div class="vr mx-2"></div>
+            <div class="text-muted small">DJANGO: { % if user.is_authenticated % } ... { % else % } ... { % endif %}</div>
+            <div class="d-flex align-items-center gap-2">
+                <span class="small text-muted">
+                    Привет, username
+                    <span class="d-block">DJANGO: {{ user.username }}</span>
+                </span>
+                <form method="post" action="#">
+                    <div class="text-muted small">DJANGO: POST action="{ % url 'logout' % }" + csrf_token</div>
+                    <button class="btn btn-outline-secondary btn-sm" type="submit">Выйти</button>
+                </form>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="#" class="btn btn-outline-secondary btn-sm">
+                    Войти
+                    <span class="text-muted small d-block">DJANGO: { % url 'login' % }</span>
+                </a>
+                <a href="#" class="btn btn-outline-success btn-sm">
+                    Регистрация
+                    <span class="text-muted small d-block">DJANGO: { % url 'register' % }</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
